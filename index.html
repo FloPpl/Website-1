@@ -15,8 +15,15 @@
         margin-top: 50px;
     }
     iframe {
-        max-width: 100%;
-        height: 600px; /* Zwiększona wysokość odtwarzacza wideo na wszystkich urządzeniach */
+        width: 100%;
+        height: 500px; /* Zwiększona wysokość odtwarzacza wideo na wszystkich urządzeniach */
+    }
+    
+    /* Reguła dla urządzeń o większej szerokości (np. komputery) */
+    @media (min-width: 768px) {
+        iframe {
+            height: 700px; /* Zwiększona wysokość odtwarzacza wideo na komputerach */
+        }
     }
 </style>
 </head>
@@ -43,7 +50,7 @@
         document.getElementById('latestVideo').innerHTML = "<p>Nie znaleziono najnowszego filmu</p>";
         return;
       }
-      const videoEmbedHtml = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}?autoplay=1&vq=hd720" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      const videoEmbedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&vq=hd720" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       const latestVideoDiv = document.getElementById('latestVideo');
       latestVideoDiv.innerHTML = videoEmbedHtml;
     })
