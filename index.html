@@ -40,10 +40,22 @@
     #latest-video {
       max-width: 90%;
       height: auto;
-      max-height: 250px;
+      max-height: 450px; /* Zwiększenie wielkości wideo na telefonach */
     }
     #footer {
       position: relative;
+    }
+    #footer a {
+      display: block; /* Odnośniki będą wyświetlane jeden pod drugim na telefonie */
+      margin-bottom: 10px; /* Dodatkowy margines między odnośnikami na telefonie */
+    }
+  }
+  /* Dodatkowy media query dla większych urządzeń */
+  @media screen and (min-width: 601px) {
+    #latest-video {
+      max-width: 70%; /* Zmniejszenie wielkości wideo na PC */
+      height: auto;
+      max-height: 350px; /* Opcjonalnie możesz zmniejszyć wysokość wideo na większych ekranach */
     }
   }
 </style>
@@ -59,8 +71,8 @@
 </div>
 
 <div id="footer">
-  <a href="https://www.youtube.com/channel/UCR_SIAZ9pEkh1Ipc9WXEAiQ" target="_blank">Youtube</a> |
-  <a href="https://www.tiktok.com/@floppl?_r=1&_d=ec22kkh4jk3mlh&sec_uid=MS4wLjABAAAALBmltwfzh9tEkZ8YtLh76tggdx-b5wwlUIY5o1g89hjkRuMegNJj0vaGyPM-p43V&share_author_id=193511955557715968&sharer_language=pl&source=h5_m&u_code=8j24j8cm9jm5d&timestamp=1711309310&user_id=193511955557715968&sec_user_id=MS4wLjABAAAALBmltwfzh9tEkZ8YtLh76tggdx-b5wwlUIY5o1g89hjkRuMegNJj0vaGyPM-p43V&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7348424657786013473&share_link_id=c52f530c-c9e9-4b96-a917-ba168a90391d&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb0229&social_share_type=5&enable_checksum=1" target="_blank">TikTok</a> |
+  <a href="https://www.youtube.com/channel/UCR_SIAZ9pEkh1Ipc9WXEAiQ" target="_blank">Youtube</a>
+  <a href="https://www.tiktok.com/@floppl?_r=1&_d=ec22kkh4jk3mlh&sec_uid=MS4wLjABAAAALBmltwfzh9tEkZ8YtLh76tggdx-b5wwlUIY5o1g89hjkRuMegNJj0vaGyPM-p43V&share_author_id=193511955557715968&sharer_language=pl&source=h5_m&u_code=8j24j8cm9jm5d&timestamp=1711309310&user_id=193511955557715968&sec_user_id=MS4wLjABAAAALBmltwfzh9tEkZ8YtLh76tggdx-b5wwlUIY5o1g89hjkRuMegNJj0vaGyPM-p43V&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7348424657786013473&share_link_id=c52f530c-c9e9-4b96-a917-ba168a90391d&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb0229&social_share_type=5&enable_checksum=1" target="_blank">TikTok</a>
   <a href="https://discord.gg/qHxzGM7SuN" target="_blank">Discord</a>
 </div>
 
