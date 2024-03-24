@@ -21,7 +21,7 @@
             position: relative;
             width: 100%;
             max-width: 800px;
-            margin-top: 100px; /* Wysokość marginesu dla urządzeń o większej wysokości ekranu */
+            margin-top: 50px; /* Zwiększenie marginesu dla wszystkich urządzeń */
         }
         iframe {
             width: 100%;
@@ -45,27 +45,28 @@
         }
         #latest-film {
             position: absolute;
-            top: 20px; /* Poprawiona pozycja tekstu "Najnowszy film" */
+            top: 10px; /* Poprawiona pozycja tekstu "Najnowszy film" */
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             padding: 10px;
             font-size: 24px;
+            z-index: 1; /* Zapewnia, że napis jest nad filmem */
         }
 
         /* Media queries dla urządzeń o maksymalnej szerokości 600px (telefony) */
         @media only screen and (max-width: 600px) {
             #video-container {
-                margin-top: 50px; /* Zwiększenie marginesu dla telefonów */
+                margin-top: 100px; /* Zwiększenie marginesu dla telefonów */
             }
 
             iframe {
-                height: 400px; /* Niezmieniona wysokość filmu na telefonach */
+                height: 300px; /* Zmniejszenie wysokości filmu na telefonach */
             }
 
             #latest-film {
-                top: 20px; /* Pozostawienie niezmienionej pozycji tekstu "Najnowszy film" na telefonach */
+                top: 20px; /* Poprawiona pozycja tekstu "Najnowszy film" na telefonach */
             }
         }
     </style>
