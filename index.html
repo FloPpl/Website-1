@@ -45,22 +45,24 @@
         }
         #latest-film {
             position: absolute;
-            top: -60px;
+            top: -60px; /* początkowa pozycja na wszystkich ekranach */
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             padding: 10px;
             font-size: 24px;
             left: 50%;
             transform: translateX(-50%);
+            z-index: 1; /* zapewnia, że napis jest nad filmem */
         }
 
+        /* Media queries dla urządzeń o maksymalnej szerokości 600px (telefony) */
         @media only screen and (max-width: 600px) {
-            iframe {
-                height: 300px; /* zmniejszenie wysokości filmu na telefonach */
+            #latest-film {
+                top: -80px; /* podnieś napis na telefonach */
             }
 
-            #latest-film {
-                top: -90px; /* podniesienie napisu na telefonach */
+            iframe {
+                margin-top: 40px; /* podnieś film na telefonach */
             }
         }
     </style>
