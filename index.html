@@ -3,78 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Najnowszy Film</title>
+<title>Najnowszy film</title>
 <style>
-  body {
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  #header {
-    text-align: center;
-    padding-top: 50px;
-  }
-  #latestFilm {
-    text-align: center;
-    padding-top: 20px;
-  }
-  #footer {
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  #footer a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-  
-  /* Media queries dla urządzeń mobilnych */
-  @media screen and (max-width: 600px) {
-    #latest-video {
-      width: 90%; /* Zwiększenie szerokości wideo na telefonach */
-      height: auto;
-      max-height: 450px; /* Zwiększenie wysokości wideo na telefonach */
+    body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
     }
-    #footer {
-      position: relative;
+    #latestVideo {
+        margin-top: 50px;
     }
-    #footer a {
-      display: block; /* Odnośniki będą wyświetlane jeden pod drugim na telefonie */
-      margin-bottom: 10px; /* Dodatkowy margines między odnośnikami na telefonie */
-    }
-  }
-  /* Dodatkowy media query dla większych urządzeń */
-  @media screen and (min-width: 601px) {
-    #latest-video {
-      width: 70%; /* Zmniejszenie szerokości wideo na PC */
-      height: auto;
-      max-height: 350px; /* Opcjonalnie możesz zmniejszyć wysokość wideo na większych ekranach */
-    }
-  }
 </style>
 </head>
 <body>
-
-<div id="header">
-  <h1>Najnowszy Film</h1>
-</div>
-
-<div id="latestFilm">
-  <iframe id="latest-video" width="80%" height="500" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<div id="footer">
-  <a href="https://www.youtube.com/channel/UCR_SIAZ9pEkh1Ipc9WXEAiQ" target="_blank">Youtube</a>
-  <a href="https://www.tiktok.com/@floppl?_r=1&_d=ec22kkh4jk3mlh&sec_uid=MS4wLjABAAAALBmltwfzh9tEkZ8YtLh76tggdx-b5wwlUIY5o1g89hjkRuMegNJj0vaGyPM-p43V&share_author_id=193511955557715968&sharer_language=pl&source=h5_m&u_code=8j24j8cm9jm5d&timestamp=1711309310&user_id=193511955557715968&sec_user_id=MS4wLjABAAAALBmltwfzh9tEkZ8YtLh76tggdx-b5wwlUIY5o1g89hjkRuMegNJj0vaGyPM-p43V&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7348424657786013473&share_link_id=c52f530c-c9e9-4b96-a917-ba168a90391d&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb0229&social_share_type=5&enable_checksum=1" target="_blank">TikTok</a>
-  <a href="https://discord.gg/qHxzGM7SuN" target="_blank">Discord</a>
-</div>
+<h1>Najnowszy film</h1>
+<div id="latestVideo"></div>
 
 <script>
   // Pobieranie najnowszego filmu z kanału YouTube
@@ -82,9 +26,22 @@
     fetch('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UCR_SIAZ9pEkh1Ipc9WXEAiQ&maxResults=1&key=AIzaSyBHSIU8Zfc-NhhvxR-JqiZ2oqQU5RquGl4')
     .then(response => response.json())
     .then(data => {
-      const videoId = data.items[0].id.videoId;
-      const iframe = document.getElementById('latest-video');
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&vq=hd1080`;
+      let videoId;
+      // Szukanie filmu, który nie zawiera "Games (No commentary)" w tytule
+      for (let i = 0; i < data.items.length; i++) {
+        if (!data.items[i].snippet.title.includes("Games (No commentary)")) {
+          videoId = data.items[i].id.videoId;
+          break;
+        }
+      }
+      // Jeśli nie znaleziono filmu spełniającego warunek
+      if (!videoId) {
+        document.getElementById('latestVideo').innerHTML = "<p>Nie znaleziono najnowszego filmu</p>";
+        return;
+      }
+      const videoEmbedHtml = `<iframe width="100%" height="auto" src="https://www.youtube.com/embed/${videoId}?autoplay=1&vq=hd720" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      const latestVideoDiv = document.getElementById('latestVideo');
+      latestVideoDiv.innerHTML = videoEmbedHtml;
     })
     .catch(error => console.error('Error:', error));
   }
@@ -92,6 +49,5 @@
   // Wywołanie funkcji po załadowaniu strony
   window.onload = getLatestVideo;
 </script>
-
 </body>
 </html>
