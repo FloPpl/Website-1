@@ -21,7 +21,7 @@
             position: relative;
             width: 100%;
             max-width: 800px;
-            margin-top: 20px;
+            margin-top: 100px; /* Wysokość marginesu dla urządzeń o większej wysokości ekranu */
         }
         iframe {
             width: 100%;
@@ -44,32 +44,17 @@
             text-decoration: underline;
         }
         #latest-film {
-            position: absolute;
-            top: -60px; /* Początkowa pozycja napisu na wszystkich ekranach */
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             padding: 10px;
             font-size: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1; /* Zapewnia, że napis jest nad filmem */
+            text-align: center;
         }
 
         /* Media queries dla urządzeń o maksymalnej szerokości 600px (telefony) */
         @media only screen and (max-width: 600px) {
-            #latest-film {
-                top: -140px; /* Jeszcze bardziej podnieś napis na telefonach */
-            }
-
-            iframe {
-                max-width: 100%; /* Ustaw maksymalną szerokość filmu na telefonach */
-            }
-        }
-
-        /* Media queries dla urządzeń o maksymalnej szerokości 480px (telefony wąskie) */
-        @media only screen and (max-width: 480px) {
-            #latest-film {
-                top: -180px; /* Jeszcze bardziej podnieś napis na wąskich telefonach */
+            #video-container {
+                margin-top: 50px; /* Zmniejszenie marginesu dla telefonów */
             }
         }
     </style>
