@@ -1,103 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strona HTML</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        #video-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin-top: 50px; /* Wysokość marginesu dla wszystkich urządzeń */
-        }
-        iframe {
-            width: 100%;
-            height: 400px; /* Wysokość filmu na większych ekranach */
-        }
-        .footer {
-            position: fixed;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-        }
-        .footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-        }
-        .footer a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-        #latest-film {
-            position: absolute;
-            top: 10px; /* Poprawiona pozycja tekstu "Najnowszy film" */
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 10px;
-            font-size: 24px;
-            z-index: 1; /* Zapewnia, że napis jest nad filmem */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strona HTML</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    #video-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin-top: 50px;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+    }
+    .footer {
+      position: fixed;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+    .footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+    }
+    .footer a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    #latest-film {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      font-size: 24px;
+      z-index: 1;
+    }
 
-        /* Media queries dla urządzeń o maksymalnej szerokości 600px (telefony) */
-        @media only screen and (max-width: 600px) {
-            #video-container {
-                margin-top: 20px; /* Zwiększenie marginesu dla telefonów */
-            }
+    /* Media queries dla urządzeń o maksymalnej szerokości 600px (telefony) */
+    @media only screen and (max-width: 600px) {
+      #video-container {
+        margin-top: 20px;
+      }
 
-            iframe {
-                height: 300px; /* Zmniejszenie wysokości filmu na telefonach */
-            }
+      iframe {
+        height: 300px;
+      }
 
-            #latest-film {
-                top: 0; /* Poprawiona pozycja tekstu "Najnowszy film" na telefonach */
-            }
-        }
-    </style>
+      #latest-film {
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  </style>
 </head>
 <body>
-    <div id="video-container">
-        <div id="latest-film">Najnowszy film</div>
-        <iframe id="latest-video" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" allowfullscreen="true" quality="high" vq="hd720"></iframe>
-    </div>
-    <div class="footer">
-        <a href="https://www.youtube.com/channel/UCR_SIAZ9pEkh1Ipc9WXEAiQ" target="_blank">Youtube</a>
-        <a href="https://discord.gg/qHxzGM7SuN">Discord</a>
-    </div>
+  <div id="video-container">
+    <div id="latest-film">Najnowszy film</div>
+    <iframe id="latest-video" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" allowfullscreen="true" quality="high" vq="hd720"></iframe>
+  </div>
+  <div class="footer">
+    <a href="https://www.youtube.com/channel/UCR_SIAZ9pEkh1Ipc9WXEAiQ" target="_blank">Youtube</a>
+    <a href="https://discord.gg/qHxzGM7SuN">Discord</a>
+  </div>
 
-    <script>
-        // Pobieranie najnowszego filmu z kanału YouTube
-        function getLatestVideo() {
-            fetch('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UCR_SIAZ9pEkh1Ipc9WXEAiQ&maxResults=1&key=AIzaSyAK7j2bV7IVFtPZQ-HktVu54ztSKf5nrm4')
-            .then(response => response.json())
-            .then(data => {
-                const videoId = data.items[0].id.videoId;
-                const iframe = document.getElementById('latest-video');
-                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&vq=hd720`;
-            })
-            .catch(error => console.error('Error:', error));
-        }
+  <script>
+    // Pobieranie najnowszego filmu z kanału YouTube
+    function getLatestVideo() {
+      fetch('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UCR_SIAZ9pEkh1Ipc9WXEAiQ&maxResults=1&key=AIzaSyAK7j2bV7IVFtPZQ-HktVu54ztSKf5nrm4')
+      .then(response => response.json())
+      .then(data => {
+        const videoId = data.items[0].id.videoId;
+        const iframe = document.getElementById('latest-video');
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&vq=hd720`;
+      })
+      .catch(error => console.error('Error:', error));
+    }
 
-        // Pobranie najnowszego filmu po załadowaniu strony
-        window.onload = function() {
-            getLatestVideo();
-        };
-    </script>
-</body>
-</html>
+    // Pobranie najnowszego filmu po załadowaniu
