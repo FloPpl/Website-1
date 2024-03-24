@@ -45,24 +45,35 @@
         }
         #latest-film {
             position: absolute;
-            top: -60px; /* początkowa pozycja na wszystkich ekranach */
+            top: -60px; /* Początkowa pozycja napisu na wszystkich ekranach */
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             padding: 10px;
             font-size: 24px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 1; /* zapewnia, że napis jest nad filmem */
+            z-index: 1; /* Zapewnia, że napis jest nad filmem */
         }
 
         /* Media queries dla urządzeń o maksymalnej szerokości 600px (telefony) */
         @media only screen and (max-width: 600px) {
             #latest-film {
-                top: -80px; /* podnieś napis na telefonach */
+                top: -80px; /* Podnieś napis na telefonach */
             }
 
             iframe {
-                margin-top: 40px; /* podnieś film na telefonach */
+                margin-top: 40px; /* Podnieś film na telefonach */
+            }
+        }
+
+        /* Media queries dla urządzeń o maksymalnej szerokości 480px (telefony wąskie) */
+        @media only screen and (max-width: 480px) {
+            #latest-film {
+                top: -100px; /* Jeszcze bardziej podnieś napis na wąskich telefonach */
+            }
+
+            iframe {
+                margin-top: 60px; /* Jeszcze bardziej podnieś film na wąskich telefonach */
             }
         }
     </style>
