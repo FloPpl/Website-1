@@ -25,7 +25,7 @@
         }
         iframe {
             width: 100%;
-            height: 400px;
+            height: 400px; /* Wysokość filmu na większych ekranach */
         }
         .footer {
             position: fixed;
@@ -60,12 +60,20 @@
             #latest-film {
                 top: -80px; /* Podnieś napis na telefonach */
             }
+
+            iframe {
+                height: 300px; /* Zmniejsz wysokość filmu na telefonach */
+            }
         }
 
         /* Media queries dla urządzeń o maksymalnej szerokości 480px (telefony wąskie) */
         @media only screen and (max-width: 480px) {
             #latest-film {
                 top: -100px; /* Jeszcze bardziej podnieś napis na wąskich telefonach */
+            }
+
+            iframe {
+                height: 250px; /* Jeszcze bardziej zmniejsz wysokość filmu na wąskich telefonach */
             }
         }
     </style>
