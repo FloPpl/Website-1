@@ -27,18 +27,22 @@
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
   }
   #footer a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
   }
-
-  /* Media queries dla telefonów komórkowych */
-  @media only screen and (max-width: 600px) {
+  
+  /* Media queries dla urządzeń mobilnych */
+  @media screen and (max-width: 600px) {
     #latest-video {
-      width: 100%;
+      width: 90%;
       height: 300px;
+    }
+    #footer {
+      position: relative;
     }
   }
 </style>
@@ -50,7 +54,7 @@
 </div>
 
 <div id="latestFilm">
-  <iframe id="latest-video" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+  <iframe id="latest-video" width="80%" height="500" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <div id="footer">
