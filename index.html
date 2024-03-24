@@ -38,9 +38,9 @@
   /* Media queries dla urządzeń mobilnych */
   @media screen and (max-width: 600px) {
     #latest-video {
-      max-width: 90%;
+      width: 90%; /* Zwiększenie szerokości wideo na telefonach */
       height: auto;
-      max-height: 450px; /* Zwiększenie wielkości wideo na telefonach */
+      max-height: 450px; /* Zwiększenie wysokości wideo na telefonach */
     }
     #footer {
       position: relative;
@@ -53,7 +53,7 @@
   /* Dodatkowy media query dla większych urządzeń */
   @media screen and (min-width: 601px) {
     #latest-video {
-      max-width: 70%; /* Zmniejszenie wielkości wideo na PC */
+      width: 70%; /* Zmniejszenie szerokości wideo na PC */
       height: auto;
       max-height: 350px; /* Opcjonalnie możesz zmniejszyć wysokość wideo na większych ekranach */
     }
