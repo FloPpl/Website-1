@@ -25,11 +25,10 @@
         }
     }
 
-    @media (min-width: 768px) {
-        /* Dla urządzeń o szerokości większej lub równej 768px */
+    @media (min-width: 300px) {
+        /* Dla urządzeń o szerokości większej niż 767px */
         iframe {
-            width: 80%; /* Zmieniamy szerokość odtwarzacza wideo na 80% */
-            height: 300px !important; /* Zmieniamy wysokość odtwarzacza wideo na 300px */
+            height: 500px !important; /* Domyślna wysokość odtwarzacza wideo na komputerach osobistych */
         }
     }
 
@@ -110,4 +109,25 @@
       }
       // Jeśli nie znaleziono filmu spełniającego warunek
       if (!videoId) {
-        document.getElementById('latestVideo').innerHTML
+        document.getElementById('latestVideo').innerHTML = "<p>Nie znaleziono najnowszego filmu</p>";
+        return;
+      }
+      const videoEmbedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&vq=hd720" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      const latestVideoDiv = document.getElementById('latestVideo');
+      latestVideoDiv.innerHTML = videoEmbedHtml;
+    })
+    .catch(error => console.error('Błąd:', error));
+  }
+
+  // Funkcja do przełączania wyświetlania formularza kontaktowego
+  function toggleForm() {
+    const contactForm = document.getElementById('contactForm');
+    contactForm.style.display = (contactForm.style.display === 'block') ? 'none' : 'block';
+  }
+
+  // Wywołanie funkcji po załadowaniu strony
+  window.onload = getLatestVideo;
+</script>
+
+</body>
+</html>
