@@ -19,15 +19,9 @@
         height: 500px; /* Default video player height */
     }
 
-    @media (min-width: 768px) {
-        iframe {
-            height: 800px; /* Video player height on desktop devices */
-        }
-    }
-
     @media (max-width: 767px) {
         iframe {
-            height: 300px; /* Video player height on mobile devices */
+            height: 300px !important; /* Video player height on mobile devices */
         }
     }
 </style>
@@ -58,6 +52,12 @@
       const videoEmbedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&vq=hd720" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       const latestVideoDiv = document.getElementById('latestVideo');
       latestVideoDiv.innerHTML = videoEmbedHtml;
+      
+      // Modify iframe height for mobile devices
+      const iframeElement = latestVideoDiv.querySelector('iframe');
+      if (iframeElement && window.innerWidth <= 767) {
+        iframeElement.style.height = "300px";
+      }
     })
     .catch(error => console.error('Error:', error));
   }
