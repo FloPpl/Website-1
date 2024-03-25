@@ -19,9 +19,9 @@
         height: 500px; /* Default video player height */
     }
 
-    @media (max-width: 767px) {
+    @media (min-width: 768px) {
         iframe {
-            height: 300px !important; /* Video player height on mobile devices */
+            height: 300px !important; /* Video player height on desktop devices */
         }
     }
 
@@ -51,14 +51,36 @@
         height: 10px;
         background-color: black;
     }
+
+    /* Hide form by default */
+    #contactForm {
+        display: none;
+    }
+
+    /* Style form */
+    form {
+        margin-top: 20px;
+    }
 </style>
 </head>
 <body>
-<a href="mailto:wwffww11111@gmail.com" style="color:white; text-decoration: none;">Contact</a>
+<a href="#" onclick="toggleForm()" style="color:white; text-decoration: none;">Contact</a>
 
 <h1>Najnowszy film</h1>
 
 <div id="latestVideo"></div>
+
+<div id="contactForm">
+  <form action="mailto:wwffww11111@gmail.com" method="post" enctype="text/plain">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br>
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+    <input type="submit" value="Send">
+  </form>
+</div>
 
 <div class="divider"></div>
 
@@ -85,13 +107,19 @@
       const latestVideoDiv = document.getElementById('latestVideo');
       latestVideoDiv.innerHTML = videoEmbedHtml;
       
-      // Modify iframe height for mobile devices
+      // Modify iframe height for desktop devices
       const iframeElement = latestVideoDiv.querySelector('iframe');
-      if (iframeElement && window.innerWidth <= 767) {
+      if (iframeElement && window.innerWidth >= 768) {
         iframeElement.style.height = "300px";
       }
     })
     .catch(error => console.error('Error:', error));
+  }
+
+  // Function to toggle display of contact form
+  function toggleForm() {
+    const contactForm = document.getElementById('contactForm');
+    contactForm.style.display = (contactForm.style.display === 'block') ? 'none' : 'block';
   }
 
   // Calling the function after the page is loaded
