@@ -45,11 +45,19 @@
     .footer-links a:hover {
         text-decoration: underline;
     }
+
+    .divider {
+        width: 100%;
+        height: 10px;
+        background-color: black;
+    }
 </style>
 </head>
 <body>
 <h1>Najnowszy film</h1>
 <div id="latestVideo"></div>
+
+<div class="divider"></div>
 
 <script>
   // Fetching the latest video from the YouTube channel
@@ -86,6 +94,8 @@
   // Calling the function after the page is loaded
   window.onload = getLatestVideo;
 </script>
+
+<div class="divider"></div>
 
 <div class="footer-links">
     <a href="https://youtube.com/@Titilus?si=cMibfOIsMyyI6mFe">YouTube</a> |
