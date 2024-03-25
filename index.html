@@ -16,12 +16,18 @@
     }
     iframe {
         width: 100%;
-        height: 500px; /* Domyślna wysokość odtwarzacza wideo */
+        height: 500px; /* Default video player height */
     }
 
     @media (min-width: 768px) {
         iframe {
-            height: 800px; /* Wysokość odtwarzacza wideo na urządzeniach desktopowych */
+            height: 800px; /* Video player height on desktop devices */
+        }
+    }
+
+    @media (max-width: 767px) {
+        iframe {
+            height: 300px; /* Video player height on mobile devices */
         }
     }
 </style>
@@ -31,20 +37,20 @@
 <div id="latestVideo"></div>
 
 <script>
-  // Pobieranie najnowszego filmu z kanału YouTube
+  // Fetching the latest video from the YouTube channel
   function getLatestVideo() {
     fetch('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UCR_SIAZ9pEkh1Ipc9WXEAiQ&maxResults=1&key=AIzaSyBHSIU8Zfc-NhhvxR-JqiZ2oqQU5RquGl4')
     .then(response => response.json())
     .then(data => {
       let videoId;
-      // Szukanie filmu, który nie zawiera "Games (No commentary)" w tytule
+      // Finding the video that does not contain "Games (No commentary)" in the title
       for (let i = 0; i < data.items.length; i++) {
         if (!data.items[i].snippet.title.includes("Games (No commentary)")) {
           videoId = data.items[i].id.videoId;
           break;
         }
       }
-      // Jeśli nie znaleziono filmu spełniającego warunek
+      // If no video meeting the condition is found
       if (!videoId) {
         document.getElementById('latestVideo').innerHTML = "<p>Nie znaleziono najnowszego filmu</p>";
         return;
@@ -56,7 +62,7 @@
     .catch(error => console.error('Error:', error));
   }
 
-  // Wywołanie funkcji po załadowaniu strony
+  // Calling the function after the page is loaded
   window.onload = getLatestVideo;
 </script>
 </body>
