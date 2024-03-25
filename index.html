@@ -10,8 +10,6 @@
         color: white;
         font-family: Arial, sans-serif;
         text-align: center;
-        max-width: 800px; /* Maksymalna szerokość całej strony */
-        margin: 0 auto; /* Wyśrodkowanie strony */
     }
     #latestVideo {
         margin-top: 50px;
@@ -60,8 +58,6 @@
     /* Formularz jest domyślnie ukryty */
     #contactForm {
         display: none;
-        max-width: 600px; /* Maksymalna szerokość formularza */
-        margin: 0 auto; /* Wyśrodkowanie formularza */
     }
 
     /* Styl formularza */
@@ -126,4 +122,12 @@
   // Funkcja do przełączania wyświetlania formularza kontaktowego
   function toggleForm() {
     const contactForm = document.getElementById('contactForm');
-    contactForm.style.display = (contactForm.style.display === '
+    contactForm.style.display = (contactForm.style.display === 'block') ? 'none' : 'block';
+  }
+
+  // Wywołanie funkcji po załadowaniu strony
+  window.onload = getLatestVideo;
+</script>
+
+</body>
+</html>
