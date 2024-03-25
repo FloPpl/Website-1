@@ -19,6 +19,12 @@
         height: 500px; /* Default video player height */
     }
 
+    @media (max-width: 767px) {
+        iframe {
+            height: 250px !important; /* Video player height on mobile devices */
+        }
+    }
+
     @media (min-width: 768px) {
         iframe {
             height: 400px !important; /* Video player height on desktop devices */
@@ -83,7 +89,7 @@
 <script>
   // Fetching the latest video from the YouTube channel
   function getLatestVideo() {
-    fetch('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UCR_SIAZ9pEkh1Ipc9WXEAiQ&maxResults=1&key=AIzaSyCF7HvhbiXQK_DWEE5DlBNZctjUGwzGwrU')
+    fetch('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UCR_SIAZ9pEkh1Ipc9WXEAiQ&maxResults=1&key=AIzaSyBHSIU8Zfc-NhhvxR-JqiZ2oqQU5RquGl4')
     .then(response => response.json())
     .then(data => {
       let videoId;
