@@ -21,18 +21,12 @@
 
     @media (min-width: 768px) {
         iframe {
-            height: 300px !important; /* Video player height on desktop devices */
+            height: 400px !important; /* Video player height on desktop devices */
         }
     }
 
     .footer-links {
         margin-top: 30px;
-        position: fixed;
-        bottom: 20px;
-        left: 0;
-        width: 100%;
-        background-color: black;
-        padding: 10px 0;
         text-align: center;
     }
 
@@ -74,15 +68,17 @@
   <form action="mailto:wwffww11111@gmail.com" method="post" enctype="text/plain">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name"><br>
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email"><br>
     <label for="message">Message:</label><br>
     <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
     <input type="submit" value="Send">
   </form>
 </div>
 
-<div class="divider"></div>
+<div class="footer-links">
+    <a href="https://youtube.com/@Titilus?si=cMibfOIsMyyI6mFe">YouTube</a> |
+    <a href="https://www.tiktok.com/@floppl?_r=1&_d=ec22kkh4jk3mlh&sec_uid=MS4wLjABAAAALBmltwfzh9tEkZ8YtLh76tggdx-b5wwlUIY5o1g89hjkRuMegNJj0vaGyPM-p43V&share_author_id=193511955557715968&sharer_language=pl&source=h5_m&u_code=8j24j8cm9jm5d&timestamp=1711309310&user_id=193511955557715968&sec_user_id=MS4wLjABAAAALBmltwfzh9tEkZ8YtLh76tggdx-b5wwlUIY5o1g89hjkRuMegNJj0vaGyPM-p43V&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7348424657786013473&share_link_id=c52f530c-c9e9-4b96-a917-ba168a90391d&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb0229&social_share_type=5&enable_checksum=1">Tiktok</a> |
+    <a href="#" style="color: white;">Discord</a>
+</div>
 
 <script>
   // Fetching the latest video from the YouTube channel
@@ -106,12 +102,6 @@
       const videoEmbedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&vq=hd720" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       const latestVideoDiv = document.getElementById('latestVideo');
       latestVideoDiv.innerHTML = videoEmbedHtml;
-      
-      // Modify iframe height for desktop devices
-      const iframeElement = latestVideoDiv.querySelector('iframe');
-      if (iframeElement && window.innerWidth >= 768) {
-        iframeElement.style.height = "300px";
-      }
     })
     .catch(error => console.error('Error:', error));
   }
@@ -125,12 +115,6 @@
   // Calling the function after the page is loaded
   window.onload = getLatestVideo;
 </script>
-
-<div class="footer-links">
-    <a href="https://youtube.com/@Titilus?si=cMibfOIsMyyI6mFe">YouTube</a> |
-    <a href="https://www.tiktok.com/@floppl?_r=1&_d=ec22kkh4jk3mlh&sec_uid=MS4wLjABAAAALBmltwfzh9tEkZ8YtLh76tggdx-b5wwlUIY5o1g89hjkRuMegNJj0vaGyPM-p43V&share_author_id=193511955557715968&sharer_language=pl&source=h5_m&u_code=8j24j8cm9jm5d&timestamp=1711309310&user_id=193511955557715968&sec_user_id=MS4wLjABAAAALBmltwfzh9tEkZ8YtLh76tggdx-b5wwlUIY5o1g89hjkRuMegNJj0vaGyPM-p43V&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7348424657786013473&share_link_id=c52f530c-c9e9-4b96-a917-ba168a90391d&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb0229&social_share_type=5&enable_checksum=1">Tiktok</a> |
-    <a href="#" style="color: white;">Discord</a>
-</div>
 
 </body>
 </html>
