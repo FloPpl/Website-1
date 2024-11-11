@@ -2,53 +2,148 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Grid</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #333;
+            min-height: 100vh;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 200px);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .color-box {
+            width: 200px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 1s;
+            border-radius: 5px;
+        }
+        .button-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .btn-random {
+            background-color: #555;
+            color: white;
+            border: none;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .btn-color {
+            margin-top: 20px;
+            color: black;
+        }
+    </style>
 </head>
-<body class="bg-dark text-white">
+<body class="d-flex flex-column align-items-center">
 
-    <div class="container mt-5">
-        <div class="row g-3">
-            <div class="col-md-4">
-                <div class="p-5 text-center color-box" style="background-color: red;">This is red</div>
-            </div>
-            <div class="col-md-4">
-              <div class="p-5 text-center color-box" style="background-color: black; color: white;">This is black</div>
-          </div>
-            <div class="col-md-4">
-                <div class="p-5 text-center color-box" style="background-color: green;">This is green</div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-5 text-center color-box" style="background-color: blue;">This is blue</div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-5 text-center color-box" style="background-color: brown;">This is brown</div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-5 text-center color-box" style="background-color: purple;">This is purple</div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-5 text-center color-box" style="background-color: yellow; color: black;">This is yellow</div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-5 text-center color-box" style="background-color: pink; color: black;">This is pink</div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-5 text-center color-box" style="background-color: cyan; color: black;">This is cyan</div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-5 text-center color-box" style="background-color: gray; color: black;">This is gray</div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-5 text-center color-box" style="background-color: black; color: white;">This is black</div>
-            </div>
-        </div>
-    </div>
+<div class="button-container">
+    <button class="btn btn-primary btn-random" onclick="startRandomColors()">Random Colors</button>
+</div>
 
-    <!-- Bootstrap JS Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- External JavaScript file -->
-    <script src="aaa.js"></script>
+<div class="container">
+    <div class="color-box bg-danger" onclick="changeBackgroundColor('red')">This is red</div>
+    <div class="color-box bg-dark" onclick="changeBackgroundColor('black')">This is black</div>
+    <div class="color-box bg-success" onclick="changeBackgroundColor('green')">This is green</div>
+    <div class="color-box bg-primary" onclick="changeBackgroundColor('blue')">This is blue</div>
+    <div class="color-box" style="background-color: brown;" onclick="changeBackgroundColor('brown')">This is brown</div>
+    <div class="color-box" style="background-color: purple;" onclick="changeBackgroundColor('purple')">This is purple</div>
+    <div class="color-box bg-warning" onclick="changeBackgroundColor('yellow')">This is yellow</div>
+    <div class="color-box" style="background-color: pink;" onclick="changeBackgroundColor('pink')">This is pink</div>
+    <div class="color-box bg-info" onclick="changeBackgroundColor('cyan')">This is cyan</div>
+    <div class="color-box bg-secondary" onclick="changeBackgroundColor('gray')">This is gray</div>
+    <div class="color-box" style="background-color: orange;" onclick="changeBackgroundColor('orange')">This is orange</div>
+    <div class="color-box" style="background-color: violet;" onclick="changeBackgroundColor('violet')">This is violet</div>
+    <div class="color-box" style="background-color: teal;" onclick="changeBackgroundColor('teal')">This is teal</div>
+    <div class="color-box" style="background-color: navy;" onclick="changeBackgroundColor('navy')">This is navy</div>
+    <div class="color-box" style="background-color: maroon;" onclick="changeBackgroundColor('maroon')">This is maroon</div>
+    <div class="color-box" style="background-color: lime;" onclick="changeBackgroundColor('lime')">This is lime</div>
+    <div class="color-box" style="background-color: olive;" onclick="changeBackgroundColor('olive')">This is olive</div>
+    <div class="color-box" style="background-color: magenta;" onclick="changeBackgroundColor('magenta')">This is magenta</div>
+    <div class="color-box" style="background-color: coral;" onclick="changeBackgroundColor('coral')">This is coral</div>
+    <div class="color-box" style="background-color: salmon;" onclick="changeBackgroundColor('salmon')">This is salmon</div>
+    <div class="color-box" style="background-color: gold;" onclick="changeBackgroundColor('gold')">This is gold</div>
+    <div class="color-box" style="background-color: silver;" onclick="changeBackgroundColor('silver')">This is silver</div>
+    <div class="color-box" style="background-color: skyblue;" onclick="changeBackgroundColor('skyblue')">This is skyblue</div>
+    <div class="color-box" style="background-color: tan;" onclick="changeBackgroundColor('tan')">This is tan</div>
+</div>
+
+<button id="colorButton" class="btn btn-color" onclick="changeBackgroundToButtonColor()">White</button>
+
+<script>
+    function changeBackgroundColor(color) {
+        document.body.style.backgroundColor = color;
+    }
+
+    let intervalId;
+
+    function startRandomColors() {
+        if (intervalId) clearInterval(intervalId); // Clear any existing interval
+        intervalId = setInterval(() => {
+            const boxes = document.querySelectorAll('.color-box');
+            const usedColors = new Set();
+
+            boxes.forEach(box => {
+                let randomColor;
+                do {
+                    randomColor = getRandomColor();
+                } while (usedColors.has(randomColor)); // Ensure the color is not repeated
+                usedColors.add(randomColor);
+                box.style.backgroundColor = randomColor;
+            });
+
+            // Change the color and text of the button
+            const colorButton = document.getElementById('colorButton');
+            const randomButtonColor = getRandomColor();
+            colorButton.style.backgroundColor = randomButtonColor;
+            colorButton.style.color = randomButtonColor.toLowerCase() === '#ffffff' ? 'black' : 'white'; // Text color
+            colorButton.textContent = getColorName(randomButtonColor); // Update button text based on color
+
+        }, 1000); // Change colors every second
+    }
+
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    function getColorName(hex) {
+        // Map some hex colors to names (add more as needed)
+        const colors = {
+            "#FF0000": "Red",
+            "#00FF00": "Green",
+            "#0000FF": "Blue",
+            "#FFFFFF": "White",
+            "#000000": "Black",
+            "#FFFF00": "Yellow",
+            "#FF00FF": "Magenta",
+            "#00FFFF": "Cyan",
+        };
+        return colors[hex.toUpperCase()] || hex; // Return name if exists, else hex code
+    }
+
+    function changeBackgroundToButtonColor() {
+        const colorButton = document.getElementById('colorButton');
+        const currentColor = colorButton.style.backgroundColor;
+        document.body.style.backgroundColor = currentColor === 'rgb(255, 255, 255)' ? '#ffffff' : currentColor;
+    }
+</script>
+
 </body>
 </html>
